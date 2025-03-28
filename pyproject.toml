@@ -1,0 +1,2 @@
+[project.scripts]
+sync-time = "sync_time.cli:sync_time"
