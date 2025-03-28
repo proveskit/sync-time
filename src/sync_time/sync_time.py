@@ -153,4 +153,4 @@ def sync_time():
         )
 
 
-sync_time()
+#sync_time()
