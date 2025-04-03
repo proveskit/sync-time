@@ -71,11 +71,13 @@ def sync_attempt(port) -> None:
                 if b"Adafruit CircuitPython" in line:
                     adafruit_line_met = True
 
-        ser.write(b"import lib.pysquared.rtc.rp2040 as rp")
+        ser.write(b"from lib.pysquared.rtc.manager.microcontroller import MicrocontrollerManager")
+        ser.write(b"\r\n")
+        ser.write(b"rtc = MicrocontrollerManager()")
         ser.write(b"\r\n")
         current_time_stuct = time.localtime()
         update_time_string = (
-            "rp.RP2040RTC.set_time({0}, {1}, {2}, {3}, {4}, {5}, {6})".format(
+            "rtc.set_time({0}, {1}, {2}, {3}, {4}, {5}, {6})".format(
                 current_time_stuct.tm_year,
                 current_time_stuct.tm_mon,
                 current_time_stuct.tm_mday,
